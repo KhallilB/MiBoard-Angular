@@ -12,13 +12,7 @@
           <div id="user-data">
             <div class="form-group">
               <label for="email">Email</label>
-              <input
-                type="text"
-                id="email"
-                class="form-control"
-                [(ngModel)]="logInArtistData.email"
-                name="email"
-              />
+              <input type="text" id="email" class="form-control" name="email" />
             </div>
             <div class="form-group">
               <label for="password">Password</label>
@@ -26,15 +20,13 @@
                 type="password"
                 id="password"
                 class="form-control"
-                [(ngModel)]="logInArtistData.password"
                 name="password"
               />
             </div>
             <div>
               <a routerLink="/artist-profile"
                 ><button
-                  (click)="logInArtist()"
-                  (click)="getUser()"
+                  (click)="logInUser()"
                   class="btn btn-primary"
                   type="submit"
                   value="Submit"

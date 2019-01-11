@@ -5,6 +5,9 @@ import { Routes, RouterModule } from "@angular/router";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 
+//Services
+import { AuthService } from "../app/services/auth.service";
+
 //Components
 import { AppComponent } from "./app.component";
 import { CommunityComponent } from "./community/community.component";
@@ -34,7 +37,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
