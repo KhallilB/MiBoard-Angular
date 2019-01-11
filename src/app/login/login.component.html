@@ -1,43 +1,32 @@
 <div>
-  <div style="padding: 50px">
-    <a routerLink="/"
-      ><button class="btn btn-primary" style="float: leftt;">Go Back</button></a
-    >
-  </div>
-  <div class="container">
-    <div class="header">Login</div>
-    <div class="row">
-      <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-        <form>
-          <div id="user-data">
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="text" id="email" class="form-control" name="email" />
-            </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input
-                type="password"
-                id="password"
-                class="form-control"
-                name="password"
-              />
-            </div>
-            <div>
-              <a routerLink="/artist-profile"
-                ><button
-                  (click)="logInUser()"
-                  class="btn btn-primary"
-                  type="submit"
-                  value="Submit"
-                  style="float: right;"
-                >
-                  Log In
-                </button></a
-              >
-            </div>
-          </div>
-        </form>
+  <div><h1>Log In</h1></div>
+  <div class="logInContainer">
+    <div id="user-data">
+      <div class="form-data">
+        <label for="email">Email</label>
+        <input type="text" id="email" class="form-control" name="email" />
+      </div>
+      <div class="form-data">
+        <label for="Password">Password</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          name="password"
+        />
+        <div>
+          <a routerLink="/"><button style="float: left">Go Back</button></a>
+          <a routerLink="/play">
+            <button
+              (click)="logInUser()"
+              type="submit"
+              value="submit"
+              style="float: right"
+            >
+              Log In
+            </button></a
+          >
+        </div>
       </div>
     </div>
   </div>
