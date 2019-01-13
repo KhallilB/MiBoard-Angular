@@ -1,37 +1,91 @@
-<div>
+<!-- <div>
   <div><h1>Sign Up</h1></div>
   <div class="signUpContainer">
-    <div id="user-data">
-      <div class="form-data">
-        <label for="name">Name</label>
-        <input type="text" id="name" class="form-control" name="name" />
-      </div>
-      <div class="form-data">
-        <label for="email">Email</label>
-        <input type="text" id="email" class="form-control" name="email" />
-      </div>
-      <div class="form-data">
-        <label for="Password">Password</label>
-        <input
-          type="password"
-          id="password"
-          class="form-control"
-          name="password"
-        />
-        <div>
-          <a routerLink="/"><button style="float: left">Go Back</button></a>
-          <a routerLink="/play">
-            <button
-              (click)="signUpUser()"
-              type="submit"
-              value="submit"
-              style="float: right"
+    <form #signUpForm="ngForm">
+      <div id="user-data">
+        <div class="form-data">
+          <label for="name">Name</label>
+          <input type="text" id="name" class="form-control" name="name" />
+        </div>
+        <div class="form-data">
+          <label for="email">Email</label>
+          <input type="text" id="email" class="form-control" name="email" />
+        </div>
+        <div class="form-data">
+          <label for="Password">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            name="password"
+          />
+          <div>
+            <a routerLink="/"><button style="float: left">Go Back</button></a>
+            <a routerLink="/play">
+              <button
+                (click)="signUpUser()"
+                type="submit"
+                value="submit"
+                style="float: right"
+              >
+                Log In
+              </button></a
             >
-              Log In
-            </button></a
-          >
+          </div>
         </div>
       </div>
-    </div>
+    </form>
   </div>
-</div>
+</div> -->
+<h1>Sign Up</h1>
+<form #signUpForm="ngForm">
+  <input
+    type="text"
+    #fullName="ngModel"
+    [(ngModel)]="userService.selectedUser.fullName"
+    name="fullName"
+    placeholder="Full Name"
+    required
+    [ngClass]="{ 'invalid-textbox': signUpForm.submitted && !fullName.valid }"
+  />
+  <div *ngIf="signUpForm.submitted && !fullName.valid">
+    <label class="validation-message">This field is required.</label>
+  </div>
+  <input
+    type="text"
+    #email="ngModel"
+    [(ngModel)]="userService.selectedUser.email"
+    name="email"
+    placeholder="Email"
+    required
+    [pattern]="emailRegex"
+    [ngClass]="{ 'invalid-textbox': signUpForm.submitted && !email.valid }"
+  />
+  <div *ngIf="signUpForm.submitted && email.errors">
+    <label *ngIf="email.errors.required" class="validation-message"
+      >This field is required.</label
+    >
+    <label *ngIf="email.errors.pattern" class="validation-message"
+      >Invalid email address.</label
+    >
+  </div>
+  <input
+    type="password"
+    #password="ngModel"
+    [(ngModel)]="userService.selectedUser.password"
+    name="password"
+    placeholder="Password"
+    minlength="4"
+    required
+    [ngClass]="{ 'invalid-textbox': signUpForm.submitted && !password.valid }"
+  />
+  <div *ngIf="signUpForm.submitted && password.errors">
+    <label *ngIf="password.errors.required" class="validation-message"
+      >This field is required.</label
+    >
+    <label *ngIf="password.errors.minlength" class="validation-message"
+      >Enter atleast 4 characters.</label
+    >
+  </div>
+  <input type="submit" value="Sign Up" />
+</form>
