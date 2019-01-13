@@ -19,6 +19,7 @@ import { SignupComponent } from "./signup/signup.component";
 import { HomeComponent } from "./home/home.component";
 import { PlayComponent } from "./play/play.component";
 import { UserProfileComponent } from "./user-profile/user-profile.component";
+import { NavComponent } from './nav/nav.component';
 
 //Routes
 const appRoutes: Routes = [
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
     SignupComponent,
     HomeComponent,
     PlayComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
