@@ -14,6 +14,9 @@ import { CommunityComponent } from "./community/community.component";
 import { LoginComponent } from "./login/login.component";
 import { SignupComponent } from "./signup/signup.component";
 import { HomeComponent } from "./home/home.component";
+import { PlayComponent } from './play/play.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserComponent } from './user/user.component';
 
 //Routes
 const appRoutes: Routes = [
@@ -29,7 +32,10 @@ const appRoutes: Routes = [
     CommunityComponent,
     LoginComponent,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    PlayComponent,
+    UserProfileComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

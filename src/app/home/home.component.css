@@ -85,3 +85,16 @@ h3 {
   animation: fadein 15s;
   text-align: right;
 }
+
+button {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  position: absolute;
+  transform: inherit;
+  -webkit-animation: fadein 15s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 15s; /* Firefox < 16 */
+  -ms-animation: fadein 15s; /* Internet Explorer */
+  -o-animation: fadein 15s; /* Opera < 12.1 */
+  animation: fadein 15s;
+  text-align: right;
+}
