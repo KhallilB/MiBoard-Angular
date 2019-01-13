@@ -14,15 +14,14 @@ import { CommunityComponent } from "./community/community.component";
 import { LoginComponent } from "./login/login.component";
 import { SignupComponent } from "./signup/signup.component";
 import { HomeComponent } from "./home/home.component";
-import { PlayComponent } from './play/play.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { UserComponent } from './user/user.component';
+import { PlayComponent } from "./play/play.component";
+import { UserProfileComponent } from "./user-profile/user-profile.component";
 
 //Routes
 const appRoutes: Routes = [
   { path: "community", component: CommunityComponent },
-  { path: "login", component: LoginComponent },
-  { path: "signup", component: SignupComponent },
+  { path: "login", component: LoginComponent, pathMatch: "full" },
+  { path: "signup", component: SignupComponent, pathMatch: "full" },
   { path: "", component: HomeComponent }
 ];
 
@@ -34,8 +33,7 @@ const appRoutes: Routes = [
     SignupComponent,
     HomeComponent,
     PlayComponent,
-    UserProfileComponent,
-    UserComponent
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

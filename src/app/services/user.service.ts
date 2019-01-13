@@ -18,4 +18,24 @@ export class UserService {
   postUser(user: User) {
     return this.http.post(environment.apiBaseUrl + "/signup", user);
   }
+
+  login(authCreds) {
+    return this.http.post(
+      environment.apiBaseUrl + "/authenticate",
+      authCreds
+      // this.noAuthHeader
+    );
+  }
+
+  setToken(token: string) {
+    localStorage.setItem("token", token);
+  }
+
+  getToken() {
+    return localStorage.getItem("token");
+  }
+
+  deleteToken() {
+    localStorage.removeItem("token");
+  }
 }
