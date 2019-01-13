@@ -89,3 +89,9 @@
   </div>
   <input type="submit" value="Sign Up" />
 </form>
+
+<!-- Success Message -->
+<div class="success" *ngIf="showSuccessMessage">User Created Successfully!</div>
+
+<!-- Error Message -->
+<div class="alert" *ngIf="serverErrorMessages">{{ serverErrorMessage }}</div>
