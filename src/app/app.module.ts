@@ -5,8 +5,11 @@ import { Routes, RouterModule } from "@angular/router";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 
-//Services
+//Services & Gaurds
 import { AuthService } from "../app/services/auth.service";
+import { UserService } from "../app/services/user.service";
+
+import { AuthGuard } from "../app/services/auth.guard";
 
 //Components
 import { AppComponent } from "./app.component";
@@ -22,7 +25,13 @@ const appRoutes: Routes = [
   { path: "community", component: CommunityComponent },
   { path: "login", component: LoginComponent, pathMatch: "full" },
   { path: "signup", component: SignupComponent, pathMatch: "full" },
-  { path: "", component: HomeComponent }
+  { path: "", component: HomeComponent },
+  {
+    path: "userprofile",
+    component: UserProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  { path: "play", component: PlayComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
@@ -41,7 +50,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
