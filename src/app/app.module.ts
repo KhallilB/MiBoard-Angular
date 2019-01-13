@@ -2,7 +2,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 
 //Services & Gaurds
@@ -10,6 +10,8 @@ import { AuthService } from "../app/services/auth.service";
 import { UserService } from "../app/services/user.service";
 
 import { AuthGuard } from "../app/services/auth.guard";
+
+import { AuthInterceptor } from "../app/services/auth.interceptor";
 
 //Components
 import { AppComponent } from "./app.component";
@@ -19,7 +21,7 @@ import { SignupComponent } from "./signup/signup.component";
 import { HomeComponent } from "./home/home.component";
 import { PlayComponent } from "./play/play.component";
 import { UserProfileComponent } from "./user-profile/user-profile.component";
-import { NavComponent } from './nav/nav.component';
+import { NavComponent } from "./nav/nav.component";
 
 //Routes
 const appRoutes: Routes = [
@@ -52,7 +54,11 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule
   ],
-  providers: [AuthService, UserService],
+  providers: [
+    AuthService,
+    UserService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

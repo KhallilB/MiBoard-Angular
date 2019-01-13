@@ -9,6 +9,8 @@ import { environment } from "../../environments/environment";
 export class UserService {
   constructor(private http: HttpClient) {}
 
+  noAuthHeader = { headers: new HttpHeaders({ NoAuth: "True" }) };
+
   selectedUser: User = {
     fullName: "",
     email: "",
@@ -16,14 +18,18 @@ export class UserService {
   };
 
   postUser(user: User) {
-    return this.http.post(environment.apiBaseUrl + "/signup", user);
+    return this.http.post(
+      environment.apiBaseUrl + "/signup",
+      user,
+      this.noAuthHeader
+    );
   }
 
   login(authCreds) {
     return this.http.post(
       environment.apiBaseUrl + "/authenticate",
-      authCreds
-      // this.noAuthHeader
+      authCreds,
+      this.noAuthHeader
     );
   }
 

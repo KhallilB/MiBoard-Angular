@@ -17,7 +17,11 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this._user.isLoggedIn()) {
+      this.router.navigateByUrl("/userprofile");
+    }
+  }
 
   model = {
     email: "",
