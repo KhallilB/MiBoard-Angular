@@ -6,7 +6,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 
 //Services & Gaurds
-import { AuthService } from "../app/services/auth.service";
 import { UserService } from "../app/services/user.service";
 
 import { AuthGuard } from "../app/services/auth.guard";
@@ -55,7 +54,6 @@ const appRoutes: Routes = [
     FormsModule
   ],
   providers: [
-    AuthService,
     UserService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],

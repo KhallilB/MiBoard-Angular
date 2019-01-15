@@ -38,11 +38,14 @@
   </div>
 </div> -->
 <h1>Sign Up</h1>
-<form #signUpForm="ngForm">
+<form
+  #signUpForm="ngForm"
+  (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)"
+>
   <input
     type="text"
     #fullName="ngModel"
-    [(ngModel)]="userService.selectedUser.fullName"
+    [(ngModel)]="_user.selectedUser.fullName"
     name="fullName"
     placeholder="Full Name"
     required
@@ -54,7 +57,7 @@
   <input
     type="text"
     #email="ngModel"
-    [(ngModel)]="userService.selectedUser.email"
+    [(ngModel)]="_user.selectedUser.email"
     name="email"
     placeholder="Email"
     required
@@ -72,10 +75,10 @@
   <input
     type="password"
     #password="ngModel"
-    [(ngModel)]="userService.selectedUser.password"
+    [(ngModel)]="_user.selectedUser.password"
     name="password"
     placeholder="Password"
-    minlength="4"
+    minlength="6"
     required
     [ngClass]="{ 'invalid-textbox': signUpForm.submitted && !password.valid }"
   />
@@ -84,7 +87,7 @@
       >This field is required.</label
     >
     <label *ngIf="password.errors.minlength" class="validation-message"
-      >Enter atleast 4 characters.</label
+      >Enter atleast 6 characters.</label
     >
   </div>
   <input type="submit" value="Sign Up" />

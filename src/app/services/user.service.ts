@@ -27,7 +27,7 @@ export class UserService {
 
   login(authCreds) {
     return this.http.post(
-      environment.apiBaseUrl + "/authenticate",
+      environment.apiBaseUrl + "/login",
       authCreds,
       this.noAuthHeader
     );

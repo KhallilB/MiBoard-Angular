@@ -1,5 +1,4 @@
 import { Component, OnInit, NgZone } from "@angular/core";
-import { AuthService } from "../services/auth.service";
 import { UserService } from "../services/user.service";
 import { Router } from "@angular/router";
 import { NgForm } from "@angular/forms";
@@ -11,7 +10,6 @@ import { NgForm } from "@angular/forms";
 })
 export class LoginComponent implements OnInit {
   constructor(
-    private _auth: AuthService,
     private _ngZone: NgZone,
     private _user: UserService,
     private router: Router
@@ -34,6 +32,7 @@ export class LoginComponent implements OnInit {
   onSubmit(form: NgForm) {
     this._user.login(form.value).subscribe(
       res => {
+        console.log(res);
         this._user.setToken(res["token"]);
         this.router.navigateByUrl("/userprofile");
       },

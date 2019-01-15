@@ -31,7 +31,7 @@
     </div>
   </div>
 </div> -->
-<div><img src="assets/img/single_user.png" id="icon" alt="User Icon" /></div>
+<h1>Log In</h1>
 <form
   #signInForm="ngForm"
   (ngSubmit)="signInForm.valid && onSubmit(signInForm)"
@@ -62,7 +62,7 @@
   <div *ngIf="signInForm.submitted && password.errors?.minlength">
     <label class="validation-message">Minimum 4 characters.</label>
   </div>
-  <input type="submit" value="Sign In" />
+  <input type="submit" value="Log In" />
 </form>
 <!-- Error message -->
 <div class="alert" *ngIf="serverErrorMessages">{{ serverErrorMessages }}</div>

@@ -1,0 +1,212 @@
+var keyData = {
+  q: {
+    keypress: "q",
+    sound: new Howl({
+      urls: ["./assets/sounds/bubbles.mp3"]
+    }),
+    color: "#1abc9c"
+  },
+  w: {
+    keypress: "w",
+    sound: new Howl({
+      urls: ["./assets/sounds/clay.mp3"]
+    }),
+    color: "#2ecc71"
+  },
+  e: {
+    keypress: "e",
+    sound: new Howl({
+      urls: ["./assets/sounds/confetti.mp3"]
+    }),
+    color: "#3498db"
+  },
+  r: {
+    keypress: "r",
+    sound: new Howl({
+      urls: ["./assets/sounds/corona.mp3"]
+    }),
+    color: "#9b59b6"
+  },
+  t: {
+    keypress: "t",
+    sound: new Howl({
+      urls: ["./assets/sounds/dotted-spiral.mp3"]
+    }),
+    color: "#34495e"
+  },
+  y: {
+    keypress: "y",
+    sound: new Howl({
+      urls: ["./assets/sounds/flash-1.mp3"]
+    }),
+    color: "#16a085"
+  },
+  u: {
+    keypress: "u",
+    sound: new Howl({
+      urls: ["./assets/sounds/flash-2.mp3"]
+    }),
+    color: "#27ae60"
+  },
+  i: {
+    keypress: "i",
+    sound: new Howl({
+      urls: ["./assets/sounds/flash-3.mp3"]
+    }),
+    color: "#2980b9"
+  },
+  o: {
+    keypress: "o",
+    sound: new Howl({
+      urls: ["./assets/sounds/glimmer.mp3"]
+    }),
+    color: "#8e44ad"
+  },
+  p: {
+    keypress: "p",
+    sound: new Howl({
+      urls: ["./assets/sounds/moon.mp3"]
+    }),
+    color: "#2c3e50"
+  },
+  a: {
+    keypress: "a",
+    sound: new Howl({
+      urls: ["./assets/sounds/pinwheel.mp3"]
+    }),
+    color: "#f1c40f"
+  },
+  s: {
+    keypress: "s",
+
+    sound: new Howl({
+      urls: ["./assets/sounds/piston-1.mp3"]
+    }),
+    color: "#e67e22"
+  },
+  d: {
+    keypress: "d",
+    sound: new Howl({
+      urls: ["./assets/sounds/piston-2.mp3"]
+    }),
+    color: "#e74c3c"
+  },
+  f: {
+    keypress: "f",
+    sound: new Howl({
+      urls: ["./assets/sounds/prism-1.mp3"]
+    }),
+    color: "#95a5a6"
+  },
+  g: {
+    keypress: "g",
+    sound: new Howl({
+      urls: ["./assets/sounds/prism-2.mp3"]
+    }),
+    color: "#f39c12"
+  },
+  h: {
+    keypress: "h",
+    sound: new Howl({
+      urls: ["./assets/sounds/prism-3.mp3"]
+    }),
+    color: "#d35400"
+  },
+  j: {
+    keypress: "j",
+    sound: new Howl({
+      urls: ["./assets/sounds/splits.mp3"]
+    }),
+    color: "#1abc9c"
+  },
+  k: {
+    keypress: "k",
+    sound: new Howl({
+      urls: ["./assets/sounds/squiggle.mp3"]
+    }),
+    color: "#2ecc71"
+  },
+  l: {
+    keypress: "l",
+    sound: new Howl({
+      urls: ["./assets/sounds/strike.mp3"]
+    }),
+    color: "#3498db"
+  },
+  z: {
+    keypress: "z",
+    sound: new Howl({
+      urls: ["./assets/sounds/suspension.mp3"]
+    }),
+    color: "#9b59b6"
+  },
+  x: {
+    keypress: "x",
+    sound: new Howl({
+      urls: ["./assets/sounds/timer.mp3"]
+    }),
+    color: "#34495e"
+  },
+  c: {
+    keypress: "c",
+    sound: new Howl({
+      urls: ["./assets/sounds/ufo.mp3"]
+    }),
+    color: "#16a085"
+  },
+  v: {
+    keypress: "v",
+    sound: new Howl({
+      urls: ["./assets/sounds/veil.mp3"]
+    }),
+    color: "#27ae60"
+  },
+  b: {
+    keypress: "b",
+    sound: new Howl({
+      urls: ["./assets/sounds/wipe.mp3"]
+    }),
+    color: "#2980b9"
+  },
+  n: {
+    keypress: "n",
+    sound: new Howl({
+      urls: ["./assets/sounds/zig-zag.mp3"]
+    }),
+    color: "#8e44ad"
+  },
+  m: {
+    keypress: "m",
+    sound: new Howl({
+      urls: ["./assets/sounds/moon.mp3"]
+    }),
+    color: "#2c3e50"
+  }
+};
+
+var rectangles = [];
+var points = [];
+
+function onKeyDown(event) {
+  if (keyData[event.key]) {
+    var maxPoint = new Point(view.size.width, view.size.height);
+    var randomPoint = Point.random();
+    var point = maxPoint * randomPoint;
+    var newRectangle = new Path.Rectangle(point, 350);
+    newRectangle.fillColor = keyData[event.key].color;
+    keyData[event.key].sound.play();
+    rectangles.push(newRectangle);
+    console.log(rectangles);
+  }
+}
+
+function onFrame(event) {
+  for (var i = 0; i < circles.length; i++) {
+    rectangles[i].scale(0.9);
+    rectangles[i].fillColor.hue += 1;
+    if (rectangles[i].area < 1) {
+      rectangles[i].remove();
+      rectangles.splice(i, 1);
+    }
+  }
+}

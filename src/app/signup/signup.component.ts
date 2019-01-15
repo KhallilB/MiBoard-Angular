@@ -1,21 +1,17 @@
-import { Component, OnInit, NgZone } from "@angular/core";
-import { AuthService } from "../services/auth.service";
+import { Component, OnInit } from "@angular/core";
 import { UserService } from "../services/user.service";
 import { NgForm } from "@angular/forms";
 
 @Component({
   selector: "app-signup",
   templateUrl: "./signup.component.html",
-  styleUrls: ["./signup.component.css"]
+  styleUrls: ["./signup.component.css"],
+  providers: [UserService]
 })
 export class SignupComponent implements OnInit {
   emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  constructor(
-    private _auth: AuthService,
-    private _ngZone: NgZone,
-    private _user: UserService
-  ) {}
+  constructor(private _user: UserService) {}
 
   ngOnInit() {}
 
@@ -26,8 +22,9 @@ export class SignupComponent implements OnInit {
     this._user.postUser(form.value).subscribe(
       res => {
         this.showSuccessMessage = true;
-        setTimeout(() => (this.showSuccessMessage = false), 3000);
+        setTimeout(() => (this.showSuccessMessage = false), 1000);
         this.resetForm(form);
+        console.log(form);
       },
       err => {
         if (err.status === 422) {
