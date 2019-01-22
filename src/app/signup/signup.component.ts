@@ -11,7 +11,7 @@ import { NgForm } from "@angular/forms";
 export class SignupComponent implements OnInit {
   emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  constructor(private _user: UserService) {}
+  constructor(public _user: UserService) {}
 
   ngOnInit() {}
 
