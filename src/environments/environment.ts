@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  apiBaseUrl: "http://localhost:3500/api"
+  production: true,
+  apiBaseUrl: "http://bit.ly/miboardservices"
 };
 
 /*
